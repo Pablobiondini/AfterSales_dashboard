@@ -1,0 +1,36 @@
+model Model
+	culture: es-AR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-AR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transformar archivo de Consulta2'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Transformar archivo de Consulta2\Consultas auxiliares'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["DimFeriados","SAP_cerrados","Parámetro2","Transformar archivo de ejemplo (2)","Archivo de ejemplo (2)","Transformar archivo (2)","NPS_Base"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_2a5f4224-81f4-4953-a3a3-0d1788eb9deb
+ref table Medidas
+ref table DimFecha
+ref table SAP_cerrados
+ref table LocalDateTable_15b2f66d-070a-4680-871a-13759a928b44
+ref table LocalDateTable_a62ca699-a813-4542-b2e9-eccd9703e6b2
+ref table LocalDateTable_a8870b33-aba7-450d-8ade-be30eef6ee98
+ref table LocalDateTable_322120f9-2ff1-4c8f-b51d-5bf936cd11bb
+ref table DimFeriados
+ref table LocalDateTable_93354c27-9ccd-474f-876f-d4d7b7a7e5cf
+ref table NPS_Base
+
+ref cultureInfo es-AR
+

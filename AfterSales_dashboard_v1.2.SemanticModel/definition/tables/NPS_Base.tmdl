@@ -1,0 +1,315 @@
+table NPS_Base
+	lineageTag: 20144170-ca63-4a98-9557-4f8f963ba896
+
+	column 'Hora de inicio'
+		dataType: string
+		lineageTag: e99cc1f3-3d8f-4201-b514-98549150f334
+		summarizeBy: none
+		sourceColumn: Hora de inicio
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hora de finalización'
+		dataType: string
+		lineageTag: b21d0abf-3bd2-40de-8e4f-1bc232e4df67
+		summarizeBy: none
+		sourceColumn: Hora de finalización
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Marca
+		dataType: string
+		lineageTag: c2ca83ae-3f36-4ed9-a461-48e71b5f0a5a
+		summarizeBy: none
+		sourceColumn: Marca
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_NPS
+		dataType: string
+		lineageTag: a9a6308e-99a6-4091-a69e-ab1dbadd7faa
+		summarizeBy: none
+		sourceColumn: Tipo_NPS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nro_Aviso
+		dataType: string
+		lineageTag: 6afc9dee-39d6-459d-94e9-46c276e7daa9
+		summarizeBy: none
+		sourceColumn: Nro_Aviso
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NPS_Mejorar
+		dataType: string
+		lineageTag: 6b718228-a0f8-455a-88de-230ebce9f6e6
+		summarizeBy: none
+		sourceColumn: NPS_Mejorar
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NPS_Destacad
+		dataType: string
+		lineageTag: 43a50bc7-8835-4f5f-91a9-3aa94ea0599a
+		summarizeBy: none
+		sourceColumn: NPS_Destacad
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Por favor, ingrese su numero de reclamo:'
+		dataType: string
+		lineageTag: e1a63e02-f406-4836-a3a1-cfa5f0b27816
+		summarizeBy: none
+		sourceColumn: Por favor, ingrese su numero de reclamo:
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NPS_Score
+		dataType: int64
+		formatString: 0
+		lineageTag: e5ed9091-e1e8-4500-9054-02f955400037
+		summarizeBy: sum
+		sourceColumn: NPS_Score
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NPS_Clase = ```
+			
+			
+			SWITCH(
+			    TRUE(),
+			    'NPS_Base'[NPS_Score] <= 6, "Detractor",
+			    'NPS_Base'[NPS_Score] <= 8, "Neutral",
+			    'NPS_Base'[NPS_Score] <= 10, "Promotor",
+			    BLANK()
+			)
+			
+			```
+		lineageTag: 315a5e60-2eb9-4dba-b79b-6d6db94ab8ac
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition NPS_Base = m
+		mode: import
+		source =
+				let
+				    // ============
+				    // 0) Parámetros
+				    // ============
+				    SiteUrl     = "https://mideacarrierjv.sharepoint.com/sites/ARGARANTIAS",
+				    LibraryName = "Documentos Compartilhados",
+				    FolderLvl1  = "REPO_PBI_BD",
+				    FolderLvl2  = "EncuestasForms",
+				    FolderLvl3  = "NPS",
+				    TargetSheet = "Sheet1",
+				
+				    // ============
+				    // 1) Navegación SharePoint robusta
+				    // ============
+				    Root    = SharePoint.Contents(SiteUrl, [ApiVersion=15]),
+				    Library = Root{[Name=LibraryName]}[Content],
+				    TryLvl1 = try Library{[Name=FolderLvl1]}[Content],
+				    Lvl1    = if TryLvl1[HasError]
+				              then (Library{[Name="General"]}[Content]){[Name=FolderLvl1]}[Content]
+				              else TryLvl1[Value],
+				    Lvl2        = Lvl1{[Name=FolderLvl2]}[Content],
+				    FinalFolder = Lvl2{[Name=FolderLvl3]}[Content],
+				
+				    // ============
+				    // 2) Filtrar archivos
+				    // ============
+				    SoloExcel =
+				        Table.SelectRows(
+				            FinalFolder,
+				            each Text.EndsWith(Text.Lower([Name]), ".xlsx")
+				        ),
+				    SinOcultos =
+				        Table.SelectRows(
+				            SoloExcel,
+				            each [Attributes]?[Hidden]? <> true
+				        ),
+				    SinOld =
+				        Table.SelectRows(
+				            SinOcultos,
+				            each [Name] <> "Old"
+				        ),
+				    Files =
+				        Table.SelectColumns(
+				            SinOld,
+				            {"Name", "Content"}
+				        ),
+				
+				    // ============
+				    // 3) Leer contenido Excel
+				    // ============
+				    AddExcel =
+				        Table.AddColumn(
+				            Files,
+				            "Excel",
+				            each Excel.Workbook([Content], true)
+				        ),
+				    ExpandSheets =
+				        Table.ExpandTableColumn(
+				            AddExcel,
+				            "Excel",
+				            {"Item", "Kind", "Data"}
+				        ),
+				    FilterSheet =
+				        Table.SelectRows(
+				            ExpandSheets,
+				            each [Item] = TargetSheet and [Kind] = "Sheet"
+				        ),
+				
+				    // ============
+				    // 3b) Expand con columnas unificadas de TODOS los archivos
+				    // ============
+				    AllColumnNames =
+				        List.Union(
+				            List.Transform(
+				                FilterSheet[Data],
+				                each Table.ColumnNames(_)
+				            )
+				        ),
+				    ExpandData =
+				        Table.ExpandTableColumn(
+				            FilterSheet,
+				            "Data",
+				            AllColumnNames
+				        ),
+				
+				    // ============
+				    // 3c) Fusionar variantes de la columna NPS en una sola
+				    // ============
+				    // Detecta todas las columnas que sean variantes de la pregunta NPS
+				    NpsVariants =
+				        List.Select(
+				            Table.ColumnNames(ExpandData),
+				            each Text.Contains(Text.Lower(_), "probabilidades")
+				        ),
+				    // Crea NPS_Score tomando el primer valor no-null entre todas las variantes
+				    AddNpsScore =
+				        Table.AddColumn(
+				            ExpandData,
+				            "NPS_Score",
+				            each
+				                let
+				                    valores = List.Select(
+				                        List.Transform(NpsVariants, (col) => Record.Field(_, col)),
+				                        each _ <> null
+				                    )
+				                in
+				                    List.First(valores, null)
+				        ),
+				    // Elimina las columnas originales variantes (ya fusionadas)
+				    DropNpsVariants =
+				        Table.RemoveColumns(
+				            AddNpsScore,
+				            List.Select(NpsVariants, each List.Contains(Table.ColumnNames(AddNpsScore), _))
+				        ),
+				
+				    // ============
+				    // 4) Clasificaciones por archivo
+				    // ============
+				    AddMarca =
+				        Table.AddColumn(
+				            DropNpsVariants,
+				            "Marca",
+				            each
+				                if Text.Contains([Name], "Carrier")  then "Carrier"
+				                else if Text.Contains([Name], "Comfee")   then "Comfee"
+				                else if Text.Contains([Name], "Midea")    then "Midea"
+				                else if Text.Contains([Name], "Surrey")   then "Surrey"
+				                else if Text.Contains([Name], "ON SITE")  then "On Site"
+				                else "Otro"
+				        ),
+				    AddTipo =
+				        Table.AddColumn(
+				            AddMarca,
+				            "Tipo_NPS",
+				            each
+				                if Text.Contains([Name], "Call Center")          then "Call Center"
+				                else if Text.Contains([Name], "Servicio técnico") then "Servicio Técnico"
+				                else "Otro"
+				        ),
+				
+				    // ============
+				    // 5) Limpieza de columnas
+				    // ============
+				    ColsQuitadas =
+				        Table.RemoveColumns(
+				            AddTipo,
+				            {"Name", "Content", "Item", "Kind", "Id", "Correo electrónico", "Nombre"}
+				        ),
+				
+				    // ============
+				    // 6) Rename robusto por texto parcial (NPS_Score ya está nombrada)
+				    // ============
+				    ColsActuales = Table.ColumnNames(ColsQuitadas),
+				
+				    MejorarCol =
+				        List.First(
+				            List.Select(ColsActuales, each Text.Contains(Text.Lower(_), "mejorar")),
+				            null
+				        ),
+				    DestacaCol =
+				        List.First(
+				            List.Select(ColsActuales, each Text.Contains(Text.Lower(_), "destaca")),
+				            null
+				        ),
+				    AvisoCol =
+				        List.First(
+				            List.Select(ColsActuales, each Text.Contains(Text.Lower(_), "reclamo")),
+				            null
+				        ),
+				
+				    RenameList =
+				        List.Select(
+				            {
+				                if MejorarCol <> null then {MejorarCol, "NPS_Mejorar"}  else null,
+				                if DestacaCol <> null then {DestacaCol, "NPS_Destacad"} else null,
+				                if AvisoCol   <> null then {AvisoCol,   "Nro_Aviso"}    else null
+				            },
+				            each _ <> null
+				        ),
+				
+				    ColsRenombradas =
+				        Table.RenameColumns(ColsQuitadas, RenameList),
+				
+				    // ============
+				    // 7) Tipos finales
+				    // ============
+				    TipoCambiado =
+				        Table.TransformColumnTypes(
+				            ColsRenombradas,
+				            {{"NPS_Score", Int64.Type}}
+				        )
+				
+				in
+				    TipoCambiado
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

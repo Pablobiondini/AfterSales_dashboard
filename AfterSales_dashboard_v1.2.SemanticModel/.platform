@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "AfterSales_dashboard_v1.2"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7f82e389-c4f8-4455-be5b-a55623c626be"
+  }
+}

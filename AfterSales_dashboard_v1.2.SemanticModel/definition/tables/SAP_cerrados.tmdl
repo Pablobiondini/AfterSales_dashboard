@@ -1,0 +1,604 @@
+table SAP_cerrados
+	lineageTag: c86123a9-029c-4e96-8e3f-f373b8cf7fa7
+
+	column 'Clase de Aviso'
+		dataType: string
+		lineageTag: 13a78823-9fd3-4615-86c4-c3094e9b30f7
+		summarizeBy: none
+		sourceColumn: Clase de Aviso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'N° de Aviso'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a188883-21f6-450b-9170-d73f5ca7b256
+		summarizeBy: sum
+		sourceColumn: N° de Aviso
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha Visita'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a8b8f4b5-21e1-4cac-b2f5-b59efa55d6a8
+		summarizeBy: none
+		sourceColumn: Fecha Visita
+
+		variation Variación
+			isDefault
+			relationship: 2ae2826b-6d39-41e4-8e8e-399063e4cc75
+			defaultHierarchy: LocalDateTable_15b2f66d-070a-4680-871a-13759a928b44.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Fecha Cierre'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9740fbaf-b668-4dbd-a537-0e74a63f0a30
+		summarizeBy: none
+		sourceColumn: Fecha Cierre
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'N° de Serie'
+		dataType: string
+		lineageTag: b0923537-1bf3-4bc1-8f14-a859d19acfb1
+		summarizeBy: none
+		sourceColumn: N° de Serie
+
+		annotation SummarizationSetBy = Automatic
+
+	column Modelo
+		dataType: string
+		lineageTag: 3d19cc4b-cac1-4ded-8fc1-a619fcdc32fc
+		summarizeBy: none
+		sourceColumn: Modelo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Descripcion Material'
+		dataType: string
+		lineageTag: b079c796-3a69-4b4e-923c-6cc80ac7079b
+		summarizeBy: none
+		sourceColumn: Descripcion Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'N° de Factura'
+		dataType: string
+		lineageTag: bc7e5c52-560a-44dd-9af2-332c409fdc18
+		summarizeBy: none
+		sourceColumn: N° de Factura
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha Fact.'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 235f4485-dd79-4251-a6a7-3d0da349e5d0
+		summarizeBy: none
+		sourceColumn: Fecha Fact.
+
+		variation Variación
+			isDefault
+			relationship: d2553f1a-8eba-4977-85aa-2e4ad44324fd
+			defaultHierarchy: LocalDateTable_a62ca699-a813-4542-b2e9-eccd9703e6b2.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Puesto de Trabajo'
+		dataType: string
+		lineageTag: a2c8f309-d84f-4db3-b528-9622d1d7bb11
+		summarizeBy: none
+		sourceColumn: Puesto de Trabajo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Centro de Servicio'
+		dataType: string
+		lineageTag: fcc66c4d-4a98-4864-8add-08471008e999
+		summarizeBy: none
+		sourceColumn: Centro de Servicio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nombre del Cliente'
+		dataType: string
+		lineageTag: 652211b6-314a-4203-9734-7313a4e05d3b
+		summarizeBy: none
+		sourceColumn: Nombre del Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dir. del Cliente'
+		dataType: string
+		lineageTag: 54503ce2-48ba-4e44-b92c-7bf901fc017a
+		summarizeBy: none
+		sourceColumn: Dir. del Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Provincia del Cliente'
+		dataType: string
+		lineageTag: f265ce93-f851-4347-91b4-afb01e7d6b2b
+		summarizeBy: none
+		sourceColumn: Provincia del Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Teléfono 1 del Cliente'
+		dataType: string
+		lineageTag: 5aea753b-c616-4a97-8337-17d14431257b
+		summarizeBy: none
+		sourceColumn: Teléfono 1 del Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Teléfono 2 del Cliente'
+		dataType: string
+		lineageTag: 3ca0099c-3c6c-4cba-b7c4-470ab6ca13cb
+		summarizeBy: none
+		sourceColumn: Teléfono 2 del Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column KM
+		dataType: int64
+		formatString: 0
+		lineageTag: e3f01b88-0bd9-40c2-b0b1-bc0d4a0534e9
+		summarizeBy: sum
+		sourceColumn: KM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'N° de Orden'
+		dataType: int64
+		formatString: 0
+		lineageTag: b5135209-9c2d-495d-b9f8-1cde55d8ce0e
+		summarizeBy: sum
+		sourceColumn: N° de Orden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Texto
+		dataType: string
+		lineageTag: efeeb17a-a927-4de1-9db6-04a9afc682ed
+		summarizeBy: none
+		sourceColumn: Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado
+		dataType: string
+		lineageTag: 7a71be8a-ff87-4d01-8bea-a3388488fe75
+		summarizeBy: none
+		sourceColumn: Estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tarifa Plan'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c09b9f1-901a-40ae-b09e-0891ee17675b
+		summarizeBy: sum
+		sourceColumn: Tarifa Plan
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tarifa Real'
+		dataType: int64
+		formatString: 0
+		lineageTag: cabe3ce4-2d5a-434c-933c-130f077fa49f
+		summarizeBy: sum
+		sourceColumn: Tarifa Real
+
+		annotation SummarizationSetBy = Automatic
+
+	column Falla
+		dataType: string
+		lineageTag: fe3abec6-0dc0-4238-9e75-53b183b63856
+		summarizeBy: none
+		sourceColumn: Falla
+
+		annotation SummarizationSetBy = Automatic
+
+	column Correo
+		dataType: string
+		lineageTag: 41e0f913-79cd-423c-95ce-403290961072
+		summarizeBy: none
+		sourceColumn: Correo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FechaDesde TAT' = ```
+			
+			VAR _clase  = SAP_cerrados[Clase de Aviso]
+			VAR _visita = SAP_cerrados[Fecha Visita]
+			VAR _inicio = SAP_cerrados[Fecha Inicio]
+			RETURN
+			IF ( _clase = "ZM" && NOT ISBLANK ( _visita ), _visita, _inicio )
+			
+			```
+		formatString: d/m/yyyy
+		lineageTag: f78378ab-7c38-4cc4-9221-761d9186705c
+		summarizeBy: none
+
+		variation Variación
+			isDefault
+			relationship: 0eec009f-248a-4af1-a9ec-172dc7665c12
+			defaultHierarchy: LocalDateTable_a8870b33-aba7-450d-8ade-be30eef6ee98.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'TAT Laboral' = ```
+			
+			VAR _desde = SAP_cerrados[FechaDesde TAT]
+			VAR _fin   = SAP_cerrados[Fecha Cierre]
+			RETURN
+			IF (
+			    ISBLANK ( _desde ) || ISBLANK ( _fin ) || _fin < _desde,
+			    BLANK(),
+			    VAR _idx_fin   = LOOKUPVALUE ( DimFecha[BIndex Laborable], DimFecha[Date], _fin )
+			    VAR _idx_desde = LOOKUPVALUE ( DimFecha[BIndex Laborable], DimFecha[Date], _desde )
+			    VAR _raw       = _idx_fin - _idx_desde   -- SIN restar 1 extra
+			    RETURN IF ( _raw >= 0, _raw, 0 )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 6d83e472-b8f2-439f-9531-affd88eb85dd
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'TAT Corridos' = ```
+			
+			VAR _desde = SAP_cerrados[FechaDesde TAT]   -- usa la misma lógica ZM/Visita
+			VAR _fin   = SAP_cerrados[Fecha Cierre]
+			RETURN
+			IF (
+			    ISBLANK(_desde) || ISBLANK(_fin) || _fin < _desde,
+			    BLANK(),
+			    DATEDIFF(_desde, _fin, DAY)   -- excluye el día de inicio, incluye el de cierre
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e415e149-b2d9-4b60-b7ca-7b874e58ca03
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Con Repuesto' = ```
+			
+			VAR _t = TRIM( LOWER( SAP_cerrados[Texto] ) )
+			RETURN
+			IF(
+			    _t = "" || _t = "m",
+			    0,
+			    1
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 649c206b-67db-40d6-b4f4-2f5fc75de83d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConRepuestoTXT = IF(SAP_cerrados[Con Repuesto]=1, "Con Repuesto", "Sin repuesto")
+		lineageTag: 410db17e-ef92-4620-a19f-0f395b0743e1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'En Radio' =
+			
+			VAR _rawTxt =
+			    TRIM(
+			        SUBSTITUTE(
+			            SUBSTITUTE(
+			                SUBSTITUTE( SAP_cerrados[KM] & "", UNICHAR(160), " " ),
+			                ".",
+			                ""
+			            ),
+			            ",",
+			            "."
+			        )
+			    )
+			VAR _kmNum = IFERROR( VALUE(_rawTxt), BLANK() )
+			RETURN
+			IF(
+			    ISBLANK(_kmNum) || _kmNum <= 50,
+			    "SI",
+			    "NO"
+			)
+		lineageTag: a15dbbdd-0f0e-4a69-bfc0-ac53d8373381
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 0aa3dc6b-0d59-4b95-a97c-a0a6edb00011
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha Inicio'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fc9732b0-8561-4556-b199-321bccbdc400
+		summarizeBy: none
+		sourceColumn: Fecha Inicio
+
+		variation Variación
+			isDefault
+			relationship: 0381d781-8f4b-4895-89c2-5bd3f289b7ca
+			defaultHierarchy: LocalDateTable_322120f9-2ff1-4c8f-b51d-5bf936cd11bb.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Nro. Cte. Comercio'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0124b7e9-f8e3-48c0-8fd9-09092b94543e
+		summarizeBy: sum
+		sourceColumn: Nro. Cte. Comercio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comercio
+		dataType: string
+		lineageTag: 251e3ede-2618-48c1-a42c-20afb344071a
+		summarizeBy: none
+		sourceColumn: Comercio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Localidad cliente'
+		dataType: string
+		lineageTag: ed53f907-7318-43f2-9e68-64e5edcc47ae
+		summarizeBy: none
+		sourceColumn: Localidad cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column TATcorr≥30 =
+			
+			VAR _v = SAP_cerrados[TAT Corridos]
+			RETURN
+			IF( NOT ISBLANK(_v) && _v >= 30, 1, 0 )
+		formatString: 0
+		lineageTag: 7396bba3-0ed6-4b1c-b5cb-235b2b4d370e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 1stVisitRes =
+			
+			VAR _visita = SAP_cerrados[Fecha Visita]
+			VAR _fin    = SAP_cerrados[Fecha Cierre]
+			RETURN
+			IF(
+			    NOT ISBLANK(_visita) &&
+			    NOT ISBLANK(_fin) &&
+			    _fin >= _visita &&
+			    DATEDIFF(_visita, _fin, DAY) <= 1,
+			    1,
+			    0
+			)
+		formatString: 0
+		lineageTag: 47811c74-ab2b-4264-a02f-e313e158c099
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Type' =
+			
+			IF(
+			    SAP_cerrados[Clase de Aviso] = "ZM",
+			    "Carry In",
+			    "In Home"
+			)
+		lineageTag: 99bea7a4-0314-4e5b-8715-10db654d7cec
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Service Type QTY' = ```
+			
+			1
+			
+			```
+		formatString: 0
+		lineageTag: ae2b0464-5d9b-40df-b66c-175690e9d274
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Visita Técnica Válida' =
+			
+			VAR f = SAP_cerrados[Falla 1]
+			RETURN
+			IF (
+			    f IN {
+			        "Anulación",
+			        "Anulado",
+			        "Anulado/cliente no lleva equipo",
+			        "Anulacion de reapertura",
+			        "Cliente ausente (sin visita)",
+			        "Datos incorrectos",
+			        "Error de carga / repetición de reclamo",
+			        "Aviso Duplicado"
+			    },
+			    0,   -- EXCLUIR
+			    1    -- INCLUIR (hubo visita técnica)
+			)
+		formatString: 0
+		lineageTag: a23a27da-e994-4b09-ad64-3101d9e94800
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Falla 1'
+		dataType: string
+		lineageTag: 5c49a751-c57f-48df-843c-eb61b05fe98a
+		summarizeBy: none
+		sourceColumn: Falla 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Geolocalizacion =
+			
+			VAR Localidad = TRIM( SAP_cerrados[Localidad cliente] )
+			VAR Provincia = TRIM( SAP_cerrados[Provincia del Cliente] )
+			VAR Pais = "Argentina"
+			RETURN
+			IF(
+			    NOT ISBLANK(Localidad) && NOT ISBLANK(Provincia),
+			    Localidad & ", " & Provincia & ", " & Pais,
+			    BLANK()
+			)
+		lineageTag: 566bcd30-e46e-4b6d-a50d-03c059772434
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Season =
+			
+			VAR Fecha = 'SAP_cerrados'[Fecha Cierre]
+			VAR AnioInicio =
+			    IF (
+			        MONTH ( Fecha ) >= 4,
+			        YEAR ( Fecha ),
+			        YEAR ( Fecha ) - 1
+			    )
+			RETURN
+			    AnioInicio & "-" & ( AnioInicio + 1 )
+		lineageTag: b4a8763e-dac1-438d-80ad-04ff6ba13ed0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SAP_cerrados = m
+		mode: import
+		source =
+				let
+				    // ============ 0) Parámetros ============
+				    SiteUrl     = "https://mideacarrierjv.sharepoint.com/sites/ARGARANTIAS",
+				    LibraryName = "Documentos Compartilhados",
+				    FolderLvl1  = "REPO_PBI_BD",
+				    FolderLvl2  = "RTAT",
+				    FolderLvl3  = "Cerrados",
+				
+				    // ============ 1) Navegación SharePoint robusta ============
+				    Root    = SharePoint.Contents(SiteUrl, [ApiVersion=15]),
+				    Library = Root{[Name=LibraryName]}[Content],
+				    TryLvl1 = try Library{[Name=FolderLvl1]}[Content],
+				    Lvl1    = if TryLvl1[HasError]
+				              then (Library{[Name="General"]}[Content]){[Name=FolderLvl1]}[Content]
+				              else TryLvl1[Value],
+				    Lvl2        = Lvl1{[Name=FolderLvl2]}[Content],
+				    FinalFolder = Lvl2{[Name=FolderLvl3]}[Content],
+				
+				    // ============ 2) Filtrar archivos ============
+				    SoloExcel  = Table.SelectRows(FinalFolder, each Text.EndsWith(Text.Lower([Name]), ".xlsx")),
+				    SinOcultos = Table.SelectRows(SoloExcel, each [Attributes]?[Hidden]? <> true),
+				    Files      = Table.SelectColumns(SinOcultos, {"Name", "Content"}),
+				
+				    // ============ 3) Invocar helper y expandir (mecanismo idéntico a M1) ============
+				    #"Invocar función personalizada1"  = Table.AddColumn(Files, "Transformar archivo (2)", each #"Transformar archivo (2)"([Content])),
+				    #"Otras columnas quitadas1"        = Table.SelectColumns(#"Invocar función personalizada1", {"Name", "Transformar archivo (2)"}),
+				    #"Columna de tabla expandida1"     = Table.ExpandTableColumn(
+				                                             #"Otras columnas quitadas1",
+				                                             "Transformar archivo (2)",
+				                                             Table.ColumnNames(#"Transformar archivo (2)"(#"Archivo de ejemplo (2)"))
+				                                         ),
+				
+				    // ============ 4) Tipos ============
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Columna de tabla expandida1",
+				        {
+				            {"Fecha", type date},                                   {"Usuario", type text},
+				            {"Clase de Aviso", type text},                          {"N° de Aviso", Int64.Type},
+				            {"N° de Ticket(CallCenter Chile)", type text},          {"Fecha Visita", type date},
+				            {"Fecha Cierre", type date},                            {"N° de Serie", type text},
+				            {"Modelo", type text},                                  {"Descripcion Material", type text},
+				            {"N° de Factura", type text},                           {"Fecha Fact.", type date},
+				            {"Puesto de Trabajo", type text},                       {"Centro de Servicio", type text},
+				            {"Cliente", Int64.Type},                                {"Razon Social", type text},
+				            {"Comuna", type text},                                  {"Nombre del Cliente", type text},
+				            {"Rut del Cliente", type any},                          {"Dir. del Cliente", type text},
+				            {"Comuna Cliente", type text},                          {"Teléfono 1 del Cliente", type text},
+				            {"KM", Int64.Type},                                     {"N° de Orden", Int64.Type},
+				            {"Texto", type text},                                   {"Estado", type text},
+				            {"Tarifa Plan", Int64.Type},                            {"Tarifa Real", Int64.Type},
+				            {"Falla", type text},                                   {"Reingreso (avisos con ser.y mod.repetido", type text},
+				            {"Tiempo1(Creacion-Visita)", Int64.Type},               {"Tiempo2(Creacion-Cierre)", Int64.Type},
+				            {"Usuario de Creación", type text},                     {"Cod.Falla 1", type text},
+				            {"Falla 1", type text},                                 {"Cod.Falla 2", type text},
+				            {"Falla 2", type text},                                 {"Cod.Falla 3", type text},
+				            {"Falla 3", type text},                                 {"Correo", type text},
+				            {"Teléfono 2 del Cliente", type text},                  {"Provincia del Cliente", type text}
+				        }
+				    ),
+				
+				    // ============ 5) Eliminar filas basura (N° de Aviso null) ============
+				    SinBasura = Table.SelectRows(#"Tipo cambiado", each [#"N° de Aviso"] <> null),
+				
+				    // ============ 6) Columnas quitadas ============
+				    #"Columnas quitadas" = Table.RemoveColumns(
+				        SinBasura,
+				        {
+				            "Usuario", "N° de Ticket(CallCenter Chile)", "Comuna", "Rut del Cliente",
+				            "Reingreso (avisos con ser.y mod.repetido", "Tiempo1(Creacion-Visita)", "Tiempo2(Creacion-Cierre)",
+				            "Usuario de Creación", "Cod.Falla 1", "Cod.Falla 2", "Falla 2", "Cod.Falla 3", "Falla 3"
+				        }
+				    ),
+				
+				    // ============ 7) Renombres ============
+				    #"Columnas con nombre cambiado" = Table.RenameColumns(
+				        #"Columnas quitadas",
+				        {
+				            {"Fecha",          "Fecha Inicio"},
+				            {"Cliente",        "Nro. Cte. Comercio"},
+				            {"Razon Social",   "Comercio"},
+				            {"Comuna Cliente", "Localidad cliente"}
+				        },
+				        MissingField.Ignore
+				    ),
+				
+				    // ============ 8) Reordenado final ============
+				    #"Columnas reordenadas" = Table.ReorderColumns(
+				        #"Columnas con nombre cambiado",
+				        {
+				            "Name",
+				            "Clase de Aviso","N° de Aviso","Fecha Inicio","Fecha Visita","Fecha Cierre",
+				            "N° de Serie","Modelo","Descripcion Material","N° de Factura","Fecha Fact.",
+				            "Puesto de Trabajo","Centro de Servicio","Nro. Cte. Comercio","Comercio",
+				            "Nombre del Cliente","Dir. del Cliente","Provincia del Cliente","Localidad cliente",
+				            "Teléfono 1 del Cliente","Teléfono 2 del Cliente","KM","N° de Orden",
+				            "Texto","Estado","Tarifa Plan","Tarifa Real","Falla","Correo"
+				        },
+				        MissingField.Ignore
+				    )
+				in
+				    #"Columnas reordenadas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

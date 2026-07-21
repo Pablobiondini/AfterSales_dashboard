@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "a8651af6de2952fa1ce0",
+  "position": {
+    "x": 947.13216957605982,
+    "y": 120.29925187032418,
+    "z": 8000,
+    "height": 312.41895261845383,
+    "width": 333.06733167082291,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SAP_cerrados"
+                    }
+                  },
+                  "Property": "Localidad cliente"
+                }
+              },
+              "queryRef": "SAP_cerrados.Localidad cliente",
+              "nativeQueryRef": "Localidad cliente"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "QTY Cerrados"
+                }
+              },
+              "queryRef": "Medidas.QTY Cerrados",
+              "nativeQueryRef": "QTY Cerrados"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "TAT Corridos"
+                }
+              },
+              "queryRef": "Medidas.TAT Corridos",
+              "nativeQueryRef": "TAT Corridos"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "QTY Cerrados"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "87.40897765221172D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Medidas.QTY Cerrados"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

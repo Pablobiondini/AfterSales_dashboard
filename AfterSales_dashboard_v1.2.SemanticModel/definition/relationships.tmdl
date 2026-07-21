@@ -1,0 +1,29 @@
+relationship 2ae2826b-6d39-41e4-8e8e-399063e4cc75
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAP_cerrados.'Fecha Visita'
+	toColumn: LocalDateTable_15b2f66d-070a-4680-871a-13759a928b44.Date
+
+relationship d2553f1a-8eba-4977-85aa-2e4ad44324fd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAP_cerrados.'Fecha Fact.'
+	toColumn: LocalDateTable_a62ca699-a813-4542-b2e9-eccd9703e6b2.Date
+
+relationship a1c6f6d8-36d7-55d5-4970-3f9712a2577c
+	fromColumn: SAP_cerrados.'Fecha Cierre'
+	toColumn: DimFecha.Date
+
+relationship 0eec009f-248a-4af1-a9ec-172dc7665c12
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAP_cerrados.'FechaDesde TAT'
+	toColumn: LocalDateTable_a8870b33-aba7-450d-8ade-be30eef6ee98.Date
+
+relationship 0381d781-8f4b-4895-89c2-5bd3f289b7ca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: SAP_cerrados.'Fecha Inicio'
+	toColumn: LocalDateTable_322120f9-2ff1-4c8f-b51d-5bf936cd11bb.Date
+
+relationship 508ac3d5-e632-4821-9bcf-718c484e1e09
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimFeriados.FechaFeriado
+	toColumn: LocalDateTable_93354c27-9ccd-474f-876f-d4d7b7a7e5cf.Date
+

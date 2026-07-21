@@ -1,0 +1,235 @@
+table Medidas
+	lineageTag: cf396dc0-34c0-4f19-924d-c68cdf7baa2b
+
+	measure 'TAT Laboral' = ```
+			
+			AVERAGE ( SAP_cerrados[TAT Laboral] )
+			
+			```
+		lineageTag: 4008f4e5-b90f-47b9-b778-89596d0ee683
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'TAT Corridos' =
+			
+			AVERAGE ( SAP_cerrados[TAT Corridos] )
+		lineageTag: bc21309b-ed36-4eab-9050-6ec073e3ed5c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'QTY Cerrados' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT( SAP_cerrados[N° de Aviso] ),
+			    NOT ISBLANK( SAP_cerrados[Fecha Cierre] )
+			)
+		formatString: 0
+		lineageTag: a5634966-2dd6-4169-8434-5569fae15d7c
+
+	measure %5D = ```
+			
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT( SAP_cerrados[N° de Aviso] ),
+			        NOT ISBLANK( SAP_cerrados[Fecha Cierre] ),
+			        KEEPFILTERS( SAP_cerrados[TAT Laboral] <= 5 )
+			    ),
+			    [QTY Cerrados]
+			)
+			
+			
+			```
+		formatString: 0
+		lineageTag: c0518bd2-1fa2-4ca7-9737-8b134278bbf5
+
+	measure %10D = ```
+			
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT( SAP_cerrados[N° de Aviso] ),
+			        NOT ISBLANK( SAP_cerrados[Fecha Cierre] ),
+			        KEEPFILTERS( SAP_cerrados[TAT Laboral] <= 10 )
+			    ),
+			    [QTY Cerrados]
+			)
+			
+			
+			```
+		formatString: 0
+		lineageTag: a7c4a996-8ac3-409d-b627-5eaa4da854fc
+
+	measure '% Con Repuesto' = ```
+			
+			AVERAGE( SAP_cerrados[Con Repuesto] )
+			
+			```
+		lineageTag: f2a729d2-5bc5-415d-83b6-e60d51bf98e4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '%Coverage Range' = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        DISTINCTCOUNT( SAP_cerrados[N° de Aviso] ),
+			        KEEPFILTERS( SAP_cerrados[En Radio] = "SI" )
+			    ),
+			    [QTY Cerrados]
+			)
+			
+			```
+		lineageTag: a5029e1c-9b68-4ed6-b43a-73cba50f08f4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure %TATcorr+30 =
+			
+			AVERAGE( SAP_cerrados[TATcorr≥30] )
+		formatString: 0
+		lineageTag: 592e3ac9-2697-464d-b565-e27d8ec569cf
+
+	measure 1stVisitRes = ```
+			
+			DIVIDE(
+			    SUM( SAP_cerrados[1stVisitRes]),
+			    [QTY Cerrados]
+			)
+			
+			```
+		lineageTag: 7a5dba4c-2fe7-4470-b463-0a24400d8ee8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rank Taller' = ```
+			
+			RANKX(
+			    ALLSELECTED ( 'SAP_cerrados'[Centro de Servicio] ),
+			    [QTY Cerrados],
+			    ,
+			    DESC,
+			    DENSE
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 193ad56b-5083-4778-87ed-5ca751fe61ed
+
+	measure 'Reparaciones Acumuladas' =
+			
+			VAR RankActual = [Rank Taller]
+			RETURN
+			CALCULATE(
+			    [QTY Cerrados],
+			    FILTER(
+			        ALLSELECTED ( 'SAP_cerrados'[Centro de Servicio] ),
+			        [Rank Taller] <= RankActual
+			    )
+			)
+		formatString: 0
+		lineageTag: a19fcc84-fedb-494d-98f2-a1da6f35d8c7
+
+	measure 'Pareto %' =
+			
+			DIVIDE(
+			    [Reparaciones Acumuladas],
+			    CALCULATE(
+			        [QTY Cerrados],
+			        ALLSELECTED ( 'SAP_cerrados'[Centro de Servicio] )
+			    )
+			)
+		lineageTag: 479cf681-ee33-4423-b76d-ed459e8bb35a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pareto Flag' =
+			
+			IF ( [Pareto %] <= 0.8, "Top 80%", "Resto 20%" )
+		lineageTag: d920a7ba-00e9-4dbb-9799-70834b0d2646
+
+	measure 'NPS CC' =
+			
+			VAR Promotores =
+			    CALCULATE(
+			        COUNTROWS('NPS_Base'),
+			        'NPS_Base'[NPS_Clase] = "Promotor",
+			        'NPS_Base'[Tipo_NPS] = "Call Center"
+			    )
+			
+			VAR Detractores =
+			    CALCULATE(
+			        COUNTROWS('NPS_Base'),
+			        'NPS_Base'[NPS_Clase] = "Detractor",
+			        'NPS_Base'[Tipo_NPS] = "Call Center"
+			    )
+			
+			VAR Total =
+			    CALCULATE(
+			        COUNTROWS('NPS_Base'),
+			        'NPS_Base'[Tipo_NPS] = "Call Center"
+			    )
+			
+			RETURN
+			DIVIDE(Promotores - Detractores, Total) * 100
+		lineageTag: 8bc9f224-e7db-4155-82e3-ca75d1f95bbe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'NPS ST' =
+			
+			VAR Promotores =
+			    CALCULATE(
+			        COUNTROWS('NPS_Base'),
+			        'NPS_Base'[NPS_Clase] = "Promotor",
+			        'NPS_Base'[Tipo_NPS] = "Servicio Técnico"
+			    )
+			
+			VAR Detractores =
+			    CALCULATE(
+			        COUNTROWS('NPS_Base'),
+			        'NPS_Base'[NPS_Clase] = "Detractor",
+			        'NPS_Base'[Tipo_NPS] = "Servicio Técnico"
+			    )
+			
+			VAR Total =
+			    CALCULATE(
+			        COUNTROWS('NPS_Base'),
+			        'NPS_Base'[Tipo_NPS] = "Servicio Técnico"
+			    )
+			
+			RETURN
+			DIVIDE(Promotores - Detractores, Total) * 100
+		lineageTag: f7746c61-6603-439e-abf0-1a8d5a86671a
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 5bfdfed9-ff1a-490c-b165-2c10c774c0d5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTYconVisita =
+			
+			CALCULATE(
+			    DISTINCTCOUNT( SAP_cerrados[N° de Aviso] ),
+			    NOT ISBLANK( SAP_cerrados[Fecha Cierre] ),
+			    NOT ISBLANK( SAP_cerrados[Fecha Visita] )
+			)
+		formatString: 0
+		lineageTag: d6226375-85de-4ae3-9c5b-32c47ca19593
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = c3f7631b521d4bc79b0ce4ec984c4e59
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

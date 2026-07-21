@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU12",
+      "reportVersionAtImport": {
+        "visual": "2.5.0",
+        "report": "3.1.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5647444729698040d52a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "SAP_cerrados"
+              }
+            },
+            "Property": "Visita Técnica Válida"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "s",
+              "Entity": "SAP_cerrados",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "s"
+                          }
+                        },
+                        "Property": "Visita Técnica Válida"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "1L"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ]
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU12",
+          "path": "BaseThemes/CY25SU12.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "medidor-removebg-preview49610215791659784.png",
+          "path": "medidor-removebg-preview49610215791659784.png",
+          "type": "Image"
+        },
+        {
+          "name": "Midea_Carrier_PPT_Template01669177533129218.png",
+          "path": "Midea_Carrier_PPT_Template01669177533129218.png",
+          "type": "Image"
+        },
+        {
+          "name": "Midea_Carrier_PPT_Template42863921269726113.png",
+          "path": "Midea_Carrier_PPT_Template42863921269726113.png",
+          "type": "Image"
+        },
+        {
+          "name": "Midea_Carrier_PPT_Template48809548845084694.png",
+          "path": "Midea_Carrier_PPT_Template48809548845084694.png",
+          "type": "Image"
+        },
+        {
+          "name": "Midea_Carrier_PPT_Template7322848447082492.png",
+          "path": "Midea_Carrier_PPT_Template7322848447082492.png",
+          "type": "Image"
+        },
+        {
+          "name": "Midea_Carrier_PPT_Template9553292787545589.png",
+          "path": "Midea_Carrier_PPT_Template9553292787545589.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

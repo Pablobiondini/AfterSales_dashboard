@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 730.29375201851076,
+            "y": 252.94012080960971
+          },
+          "nodeIndex": "SAP_cerrados",
+          "nodeLineageTag": "c86123a9-029c-4e96-8e3f-f373b8cf7fa7",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 54.03911098703594,
+            "y": 0
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "cf396dc0-34c0-4f19-924d-c68cdf7baa2b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 361.02076820335435,
+            "y": 3.3818508761034174
+          },
+          "nodeIndex": "DimFeriados",
+          "nodeLineageTag": "2332d9d8-9564-48ab-b0a2-4d1d25ca14e1",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 385.56532485030692,
+            "y": 233.06129017375034
+          },
+          "nodeIndex": "DimFecha",
+          "nodeLineageTag": "5d952cde-9cb7-47eb-90ca-1ad19d3d785e",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 31.392742195936847,
+            "y": 237.46582745472449
+          },
+          "nodeIndex": "NPS_Base",
+          "nodeLineageTag": "20144170-ca63-4a98-9557-4f8f963ba896",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 89.192590520569482,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

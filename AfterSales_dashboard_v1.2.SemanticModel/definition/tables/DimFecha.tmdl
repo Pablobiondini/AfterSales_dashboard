@@ -1,0 +1,156 @@
+table DimFecha
+	lineageTag: 5d952cde-9cb7-47eb-90ca-1ad19d3d785e
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: ff2fecba-4148-4b8c-aa76-3195333ff4cb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		formatString: 0
+		lineageTag: 5ce42214-408c-4adc-ac0c-2721a0263eb3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Año]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		lineageTag: 1330308a-965f-4968-a792-b461e96d0781
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes Nombre'
+		lineageTag: 9da8d54c-947f-4298-969b-15f032e2a0a3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes Nombre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año-Mes
+		lineageTag: 3f2af8ab-1f65-44e8-9586-4bf02794c254
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Año-Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Día
+		formatString: 0
+		lineageTag: 925a71c0-6921-4aea-97be-1530cef02122
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Día]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNum
+		formatString: 0
+		lineageTag: 77a2d093-6d39-4663-a4b1-4274b2751ae3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemanaNum]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNombre
+		lineageTag: 296e6f01-db31-4e95-b421-51ca14aa9c90
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DiaSemanaNombre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsFinDeSemana
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f35a4619-dcd0-40f3-84b3-281c9729e841
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [EsFinDeSemana]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsFeriado =
+			
+			IF(
+			    CONTAINS( DimFeriados, DimFeriados[FechaFeriado], DimFecha[Date] ),
+			    TRUE(),
+			    FALSE()
+			)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bc8aad82-8a9e-48d3-bcff-b5f95964c5ee
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsLaborable =
+			
+			IF(
+			    DimFecha[EsFeriado] = TRUE()
+			        || DimFecha[EsFinDeSemana] = TRUE(),
+			    FALSE(),
+			    TRUE()
+			)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4899bc10-4ad0-4ab8-8c99-4cd2cab8c557
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EsLaborable Num' = ```
+			
+			IF ( DimFecha[EsLaborable], 1, 0 )
+			
+			```
+		formatString: 0
+		lineageTag: 74e4d2d5-6085-49a9-bb6b-a8fa397618f3
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BIndex Laborable' = ```
+			
+			VAR _fecha = DimFecha[Date]
+			RETURN
+			CALCULATE(
+			    SUM ( DimFecha[EsLaborable Num] ),
+			    FILTER ( ALL ( DimFecha ), DimFecha[Date] <= _fecha )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 8026887a-00aa-49f9-bc5f-85d2cac997aa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFecha = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS(
+				    CALENDAR (DATE(2020,1,1), DATE(2030,12,31)),
+				    "Año", YEAR([Date]),
+				    "Mes", FORMAT([Date], "MM"),
+				    "Mes Nombre", FORMAT([Date], "MMMM"),
+				    "Año-Mes", FORMAT([Date], "YYYY-MM"),
+				    "Día", DAY([Date]),
+				    "DiaSemanaNum", WEEKDAY([Date], 2),      -- 1=lunes, 7=domingo (modo 2)
+				    "DiaSemanaNombre", FORMAT([Date], "dddd"),
+				    "EsFinDeSemana", IF(WEEKDAY([Date],2) >= 6, TRUE(), FALSE())
+				)
+				
+				```
+
+	annotation PBI_Id = 0b878f3cfc04445897abc27f9930346c
+

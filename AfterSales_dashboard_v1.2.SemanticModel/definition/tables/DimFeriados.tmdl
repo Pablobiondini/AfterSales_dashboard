@@ -1,0 +1,41 @@
+table DimFeriados
+	excludeFromModelRefresh
+	lineageTag: 2332d9d8-9564-48ab-b0a2-4d1d25ca14e1
+
+	column FechaFeriado
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 982ab4c7-12c2-4051-9342-607e1de65c8e
+		summarizeBy: none
+		sourceColumn: FechaFeriado
+
+		variation Variación
+			isDefault
+			relationship: 508ac3d5-e632-4821-9bcf-718c484e1e09
+			defaultHierarchy: LocalDateTable_93354c27-9ccd-474f-876f-d4d7b7a7e5cf.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DescripcionFeriado
+		dataType: string
+		lineageTag: f5eef5d1-ea0c-4e2c-b7bb-12b7e9d2c2fc
+		summarizeBy: none
+		sourceColumn: DescripcionFeriado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFeriados = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("rZO9btswFIVfhdDkAkFoypbsjq2DGjFqo0iKLEaGG4kIWMikQUoG0jfq4KHo2k0v1ktR1A/MFh286If34PLcw4/7fcQoo/E0TqKb6EP9U5FdxU8qer7ZRzM685UVaAknKMjkcyW5edfU56H6FnTpBfFAcVefgewgE0qiLOekALLlB6UFkKPS9veJ6xxy8ma/N5UpRSbA9aHzUZucFyguuQapUG6bKUNWUJ9zfHNpG6wrrrWVki0UJyHB3Da92KJvtsFRuSGPIEs3MVv2xSfBtRxXaXJh46uGF/gGudKt007ypeKy5G416ZcfMN2iykT9Szpzb4pMcnUQ8lW51FhK064JGEXAznMvMasSCmEjsjuvNRS35E5JYiOvz/gWrxVvsl3Xv/mBG7f5tG/X2rb9PoLMMcBG8p4uvOIeV48cH9KHzxK6DMyEOXbLGFFnYlJqMAWgy3acGAFjoVDmg/VH9WJPc8hII1pSFvfWDpBVtjVZKZnxYxOiD7jX7eBkQ2qPrNkivYQbU459KUg3DhgQjPBuL4hVfOIIcq7IcTRgV74C/ek16J/1vS7hd5Cm/8I76TUBkD0vqddcEd80iC+ZGDToUWs5TsMcT/tq4LQ8z/9le6NM/cM6GZDvusQU9/F2hXf7AN/BI8NYYJwA/2SCozPmJlu0fP/F/HJQDl8Td0QaNxhfmHR4YZ7/AA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [FechaFeriado = _t, DescripcionFeriado = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"FechaFeriado", type date}, {"DescripcionFeriado", type text}})
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,108 @@
+expression Parámetro2 = #"Archivo de ejemplo (2)" meta [IsParameterQuery=true, BinaryIdentifier=#"Archivo de ejemplo (2)", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 991c538e-44e8-4975-851b-b683650256d8
+	queryGroup: 'Transformar archivo de Consulta2\Consultas auxiliares'
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transformar archivo de ejemplo (2)' =
+		let
+		    Origen = Excel.Workbook(Parámetro2, null, true),
+		    Sheet1_Sheet = Origen{[Item="Sheet1",Kind="Sheet"]}[Data],
+		    #"Encabezados promovidos" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true])
+		in
+		    #"Encabezados promovidos"
+	lineageTag: 3f58d89b-0f0a-427a-8890-5a7c6b1e7cc7
+	queryGroup: 'Transformar archivo de Consulta2'
+
+	annotation PBI_ResultType = Table
+
+expression 'Archivo de ejemplo (2)' =
+		let
+		    // ============
+		    // Parámetros
+		    // ============
+		    SiteUrl     = "https://mideacarrierjv.sharepoint.com/sites/ARGARANTIAS",
+		    LibraryName = "Documentos Compartilhados",
+		    FolderLvl1  = "REPO_PBI_BD",
+		    FolderLvl2  = "RTAT",
+		    FolderLvl3  = "Cerrados",
+		    TargetSheet = "Sheet1",
+		
+		    // Conjunto de columnas esperado (del M original)
+		    ExpectedCols = {
+		        "Fecha","Usuario","Clase de Aviso","N° de Aviso","N° de Ticket(CallCenter Chile)","Fecha Visita","Fecha Cierre",
+		        "N° de Serie","Modelo","Descripcion Material","N° de Factura","Fecha Fact.","Puesto de Trabajo","Centro de Servicio",
+		        "Cliente","Razon Social","Comuna","Nombre del Cliente","Rut del Cliente","Dir. del Cliente","Comuna Cliente",
+		        "Teléfono 1 del Cliente","KM","N° de Orden","Texto","Estado","Tarifa Plan","Tarifa Real","Falla",
+		        "Reingreso (avisos con ser.y mod.repetido","Tiempo1(Creacion-Visita)","Tiempo2(Creacion-Cierre)","Usuario de Creación",
+		        "Cod.Falla 1","Falla 1","Cod.Falla 2","Falla 2","Cod.Falla 3","Falla 3","Correo","Teléfono 2 del Cliente","Provincia del Cliente"
+		    },
+		
+		    // =========================================
+		    // 1) Navegación SharePoint (robusta)
+		    // =========================================
+		    Root       = SharePoint.Contents(SiteUrl, [ApiVersion=15]),
+		    LibraryRow = Root{[Name=LibraryName]},
+		    Library    = LibraryRow[Content],  // SIEMPRE [Content]
+		
+		    // Intento directo a REPO_PBI_BD; si no, busco dentro de "General"
+		    TryLvl1Direct = try Library{[Name=FolderLvl1]}[Content],
+		    Lvl1 =
+		        if TryLvl1Direct[HasError]
+		        then
+		            let
+		                General = Library{[Name="General"]}[Content],
+		                Lvl1Alt = General{[Name=FolderLvl1]}[Content]
+		            in
+		                Lvl1Alt
+		        else
+		            TryLvl1Direct[Value],
+		
+		    Lvl2        = Lvl1{[Name=FolderLvl2]}[Content],
+		    FinalFolder = Lvl2{[Name=FolderLvl3]}[Content],
+		
+		    // =========================================
+		    // 2) Filtrar solo .xlsx y dejar Name/Content
+		    // =========================================
+		    ArchivosExcel    = Table.SelectRows(FinalFolder, each Text.EndsWith(Text.Lower([Name]), ".xlsx")),
+		    Archivos_Limpios = Table.SelectColumns(ArchivosExcel, {"Name","Content"}),
+		    Navegación1 = Archivos_Limpios{0}[Content]
+		in
+		    Navegación1
+	lineageTag: af1a486f-35ad-49de-95a2-2f35de9429a3
+	queryGroup: 'Transformar archivo de Consulta2\Consultas auxiliares'
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transformar archivo (2)' =
+		let
+		    Origen = (Parámetro2 as binary) =>
+		let
+		    Origen   = Excel.Workbook(Parámetro2, null, true),
+		
+		    // Buscar hoja en orden de prioridad: "Data" primero, luego "Sheet1", luego cualquiera
+		    TodasHojas  = Table.SelectRows(Origen, each [Kind] = "Sheet"),
+		    ConLower    = Table.AddColumn(TodasHojas, "_lower", each Text.Lower([Item]), type text),
+		    TryData     = Table.SelectRows(ConLower, each [_lower] = "data"),
+		    TrySheet1   = Table.SelectRows(ConLower, each [_lower] = "sheet1"),
+		    HojaElegida = if   Table.RowCount(TryData)   > 0 then TryData{0}[Data]
+		                  else if Table.RowCount(TrySheet1) > 0 then TrySheet1{0}[Data]
+		                  else ConLower{0}[Data],  // fallback: primera hoja disponible
+		
+		    Encabezados = Table.PromoteHeaders(HojaElegida, [PromoteAllScalars=true]),
+		    ColsLimpias = Table.TransformColumnNames(Encabezados, each Text.Trim(Text.Clean(_)))
+		in
+		    ColsLimpias
+		in
+		    Origen
+	lineageTag: 113a0507-8473-456d-8ebb-bc233185b4bc
+	queryGroup: 'Transformar archivo de Consulta2\Consultas auxiliares'
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Function
+
