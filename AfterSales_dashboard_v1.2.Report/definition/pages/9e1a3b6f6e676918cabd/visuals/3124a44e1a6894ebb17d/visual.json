@@ -1,0 +1,431 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "3124a44e1a6894ebb17d",
+  "position": {
+    "x": 87.537993920972653,
+    "y": 382.24924012158056,
+    "z": 0,
+    "height": 337.50759878419456,
+    "width": 1011.5501519756839,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SAP_cerrados"
+                    }
+                  },
+                  "Property": "Service Type"
+                }
+              },
+              "queryRef": "SAP_cerrados.Service Type",
+              "nativeQueryRef": "Service Type",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFecha"
+                    }
+                  },
+                  "Property": "Año"
+                }
+              },
+              "queryRef": "DimFecha.Año",
+              "nativeQueryRef": "Año",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFecha"
+                    }
+                  },
+                  "Property": "Mes"
+                }
+              },
+              "queryRef": "DimFecha.Mes",
+              "nativeQueryRef": "Mes",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "SAP_cerrados"
+                        }
+                      },
+                      "Property": "Service Type"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Min(SAP_cerrados.Service Type)",
+              "nativeQueryRef": "Qty",
+              "displayName": "Qty"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "TAT Laboral"
+                }
+              },
+              "queryRef": "Medidas.TAT Laboral",
+              "nativeQueryRef": "TAT Laboral"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "%5D"
+                }
+              },
+              "queryRef": "Medidas.%5D",
+              "nativeQueryRef": "%5D",
+              "format": "0.00 %;-0.00 %;0.00 %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "FVR(T)"
+                }
+              },
+              "queryRef": "Medidas.FVR(T)",
+              "nativeQueryRef": "FVR(T)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "FVR(5)"
+                }
+              },
+              "queryRef": "Medidas.FVR(5)",
+              "nativeQueryRef": "FVR(5)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "FVR(10)"
+                }
+              },
+              "queryRef": "Medidas.FVR(10)",
+              "nativeQueryRef": "FVR(10)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "FVR(15)"
+                }
+              },
+              "queryRef": "Medidas.FVR(15)",
+              "nativeQueryRef": "FVR(15)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DimFecha"
+                  }
+                },
+                "Property": "Mes"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "DimFecha.Mes"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimFecha"
+                    }
+                  },
+                  "Property": "Mes"
+                }
+              }
+            ],
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6a35240edb3409190300",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "SAP_cerrados"
+              }
+            },
+            "Property": "Service Type"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "s",
+              "Entity": "SAP_cerrados",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "s"
+                          }
+                        },
+                        "Property": "Service Type"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Carry In'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "f1e410b404b6d930c520",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimFecha"
+              }
+            },
+            "Property": "Año"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1134d012a7b702e09816",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimFecha"
+              }
+            },
+            "Property": "Mes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "eb33ec03ba5368cb9e24",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "SAP_cerrados"
+                  }
+                },
+                "Property": "Service Type"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3e49e9a1ce0cb3ba03a8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "TAT Laboral"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "779ecf99793cd0e79a30",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "%5D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8ae31e7a106ad76e9a36",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "FVR(5)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "18dd61d7489132eda6e3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "FVR(10)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5e9f806e8eb6700228a0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "FVR(15)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f7242a3de2d437495256",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "FVR(T)"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

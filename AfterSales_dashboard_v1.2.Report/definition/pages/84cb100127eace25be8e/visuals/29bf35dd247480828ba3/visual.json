@@ -114,7 +114,7 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "1stVisitRes"
+                  "Property": "FVR(T)"
                 }
               },
               "queryRef": "Medidas.1stVisitRes",

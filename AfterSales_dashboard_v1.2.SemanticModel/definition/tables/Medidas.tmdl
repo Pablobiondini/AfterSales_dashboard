@@ -90,7 +90,7 @@ table Medidas
 		formatString: 0
 		lineageTag: 592e3ac9-2697-464d-b565-e27d8ec569cf
 
-	measure 1stVisitRes = ```
+	measure FVR(T) = ```
 			
 			DIVIDE(
 			    SUM( SAP_cerrados[1stVisitRes]),
@@ -98,9 +98,8 @@ table Medidas
 			)
 			
 			```
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
 		lineageTag: 7a5dba4c-2fe7-4470-b463-0a24400d8ee8
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Rank Taller' = ```
 			
@@ -201,6 +200,44 @@ table Medidas
 			RETURN
 			DIVIDE(Promotores - Detractores, Total) * 100
 		lineageTag: f7746c61-6603-439e-abf0-1a8d5a86671a
+
+	measure FVR(5) = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM( SAP_cerrados[1stVisitRes] ),
+			        SAP_cerrados[TAT Laboral] <= 5
+			    ),
+			    [QTY Cerrados]
+			)
+			
+			```
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 92dd1545-bb80-4ffc-8515-28a052860213
+
+	measure FVR(10) =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM( SAP_cerrados[1stVisitRes] ),
+			        SAP_cerrados[TAT Laboral] <= 10
+			    ),
+			    [QTY Cerrados]
+			)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		lineageTag: 9a56f5e4-93ea-4977-8700-32de245653f4
+
+	measure FVR(15) =
+			
+			DIVIDE(
+			    CALCULATE(
+			        SUM( SAP_cerrados[1stVisitRes] ),
+			        SAP_cerrados[TAT Laboral] <= 15
+			    ),
+			    [QTY Cerrados]
+			)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		lineageTag: 5edfd870-a5b7-42bf-b8fc-811079302be7
 
 	column Column
 		isHidden

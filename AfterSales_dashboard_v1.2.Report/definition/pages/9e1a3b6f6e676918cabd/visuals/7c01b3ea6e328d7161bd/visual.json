@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
-  "name": "a9e3ccbd258ab60c600a",
+  "name": "7c01b3ea6e328d7161bd",
   "position": {
-    "x": 534.85714285714289,
-    "y": 507.02521008403363,
+    "x": 1099.0881458966567,
+    "y": 198.419452887538,
     "z": 1000,
-    "height": 94.386554621848745,
-    "width": 303.73109243697479,
+    "height": 366.68693009118545,
+    "width": 133.25227963525836,
     "tabOrder": 1000
   },
   "visual": {
@@ -50,7 +50,7 @@
             "orientation": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },
@@ -70,7 +70,7 @@
             "overFlowDirection": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "0D"
                 }
               }
             }
@@ -79,5 +79,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "71ef13cc804d03a5069b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "SAP_cerrados"
+              }
+            },
+            "Property": "Clase de Aviso"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
