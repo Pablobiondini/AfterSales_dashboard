@@ -239,6 +239,32 @@ table Medidas
 		formatString: 0.0\ %;-0.0\ %;0.0\ %
 		lineageTag: 5edfd870-a5b7-42bf-b8fc-811079302be7
 
+	measure %RRR-60 = ```
+			
+			DIVIDE(
+			    CALCULATE(
+			        [QTY Cerrados],
+			        SAP_cerrados[RRR-60 Flag] = 1
+			    ),
+			    [QTY Cerrados]
+			)
+			
+			```
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		lineageTag: dd72e26f-0b38-4db6-ac7d-853e7f2cfa22
+
+	measure %RRR-30 =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [QTY Cerrados],
+			        SAP_cerrados[RRR-30 Flag] = 1
+			    ),
+			    [QTY Cerrados]
+			)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		lineageTag: 670e4c51-8005-4c5c-83c2-5fd1e59b24e5
+
 	column Column
 		isHidden
 		formatString: 0

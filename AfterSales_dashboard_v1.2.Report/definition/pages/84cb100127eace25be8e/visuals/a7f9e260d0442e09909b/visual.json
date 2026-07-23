@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "a7f9e260d0442e09909b",
   "position": {
-    "x": 120.29925187032418,
-    "y": 122.09476309226932,
+    "x": 72.718204488778056,
+    "y": 122.99251870324188,
     "z": 0,
-    "height": 335.76059850374065,
-    "width": 769.37655860349128,
+    "height": 334.86284289276813,
+    "width": 971.37157107231917,
     "tabOrder": 0
   },
   "visual": {
@@ -165,6 +165,48 @@
               "queryRef": "Medidas.%TATcorr+30",
               "nativeQueryRef": "%TATcorr+30",
               "format": "0.00 %;-0.00 %;0.00 %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "FVR(15)"
+                }
+              },
+              "queryRef": "Medidas.FVR(15)",
+              "nativeQueryRef": "FVR(15)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "%RRR-60"
+                }
+              },
+              "queryRef": "Medidas.RRR-60 %",
+              "nativeQueryRef": "%RRR-60"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "%RRR-30"
+                }
+              },
+              "queryRef": "Medidas.%RRR-30",
+              "nativeQueryRef": "%RRR-30"
             }
           ]
         }
@@ -299,5 +341,177 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ce5fae71b5d4305acb0a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimFecha"
+              }
+            },
+            "Property": "Mes"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "43d75eaae9d520284cc2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "TAT Laboral"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "89ed6b8be69980cee07c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "TAT Corridos"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f3adf19310803005a4a1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "QTY Cerrados"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1105e63f710a27a7c7d8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "%5D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d8be21251c0dd1832542",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "%10D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "234703d65083b0eab4b3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "% Con Repuesto"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "39ca317b09c8c558ca70",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "%Coverage Range"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "65d910ae79133143e86e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "FVR(T)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "48d06944ba682c97b167",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "%TATcorr+30"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "713cf3975266a073bda6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "FVR(15)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3833c5bf8360b4b37422",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "%RRR-60"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

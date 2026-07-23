@@ -493,6 +493,98 @@ table SAP_cerrados
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'RRR-60 Flag' =
+			
+			VAR SerieActual =
+			    TRIM( SAP_cerrados[N° de Serie] & "" )
+			
+			VAR FechaFactActual =
+			    SAP_cerrados[Fecha Fact.]
+			
+			VAR AvisoActual =
+			    SAP_cerrados[N° de Aviso]
+			
+			VAR FechaInicioActual =
+			    SAP_cerrados[Fecha Inicio]
+			
+			VAR RepeticionesPrevias =
+			    COUNTROWS(
+			        FILTER(
+			            ALL( SAP_cerrados ),
+			            VAR SerieComparada =
+			                TRIM( SAP_cerrados[N° de Serie] & "" )
+			            RETURN
+			                SerieActual <> ""
+			                    && SerieComparada <> ""
+			                    && SerieComparada = SerieActual
+			                    && SAP_cerrados[Fecha Fact.] = FechaFactActual
+			                    && SAP_cerrados[N° de Aviso] <> AvisoActual
+			                    && NOT ISBLANK( SAP_cerrados[Fecha Cierre] )
+			                    && SAP_cerrados[Fecha Cierre] <= FechaInicioActual
+			                    && SAP_cerrados[Fecha Cierre] >= FechaInicioActual - 60
+			        )
+			    )
+			
+			RETURN
+			IF(
+			    SerieActual = ""
+			        || ISBLANK( FechaFactActual )
+			        || ISBLANK( FechaInicioActual ),
+			    0,
+			    IF( RepeticionesPrevias > 0, 1, 0 )
+			)
+		formatString: 0
+		lineageTag: d76f63e4-adb7-45be-8b56-bf60cbc1b8db
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'RRR-30 Flag' =
+			
+			VAR SerieActual =
+			    TRIM( SAP_cerrados[N° de Serie] & "" )
+			
+			VAR FechaFactActual =
+			    SAP_cerrados[Fecha Fact.]
+			
+			VAR AvisoActual =
+			    SAP_cerrados[N° de Aviso]
+			
+			VAR FechaInicioActual =
+			    SAP_cerrados[Fecha Inicio]
+			
+			VAR RepeticionesPrevias =
+			    COUNTROWS(
+			        FILTER(
+			            ALL( SAP_cerrados ),
+			            VAR SerieComparada =
+			                TRIM( SAP_cerrados[N° de Serie] & "" )
+			            RETURN
+			                SerieActual <> ""
+			                    && SerieComparada <> ""
+			                    && SerieComparada = SerieActual
+			                    && SAP_cerrados[Fecha Fact.] = FechaFactActual
+			                    && SAP_cerrados[N° de Aviso] <> AvisoActual
+			                    && NOT ISBLANK( SAP_cerrados[Fecha Cierre] )
+			                    && SAP_cerrados[Fecha Cierre] <= FechaInicioActual
+			                    && SAP_cerrados[Fecha Cierre] >= FechaInicioActual - 30
+			        )
+			    )
+			
+			RETURN
+			IF(
+			    SerieActual = ""
+			        || ISBLANK( FechaFactActual )
+			        || ISBLANK( FechaInicioActual ),
+			    0,
+			    IF( RepeticionesPrevias > 0, 1, 0 )
+			)
+		formatString: 0
+		lineageTag: e670c3da-b471-4419-aaba-f7d543d54f12
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition SAP_cerrados = m
 		mode: import
 		source =
