@@ -590,9 +590,9 @@ table SAP_cerrados
 		source =
 				let
 				    // ============ 0) Parámetros ============
-				    SiteUrl     = "https://mideacarrierjv.sharepoint.com/sites/ARGARANTIAS",
+				    SiteUrl     = "https://mideacarrierjv.sharepoint.com/sites/ARSOPORTEITARG-DATALAKE",
 				    LibraryName = "Documentos Compartilhados",
-				    FolderLvl1  = "REPO_PBI_BD",
+				    FolderLvl1  = "Garantias",
 				    FolderLvl2  = "RTAT",
 				    FolderLvl3  = "Cerrados",
 				
