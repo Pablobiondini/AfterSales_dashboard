@@ -1,0 +1,14 @@
+Always read:
+- Documentation/AGENT_CONTEXT.md
+- Documentation/TECHNICAL_DOCUMENTATION.md
+- Documentation/CHANGELOG.md
+
+When modifying PBIP:
+
+1. Analyze model first.
+2. Explain impact before changing.
+3. Update CHANGELOG.md.
+4. Keep DAX formatted.
+5. Do not delete existing measures unless explicitly requested.
+6. Preserve business logic definitions.
+7. Use Git commits after each completed task.

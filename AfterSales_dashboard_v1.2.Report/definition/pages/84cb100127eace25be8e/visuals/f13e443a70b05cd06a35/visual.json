@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "f13e443a70b05cd06a35",
+  "position": {
+    "x": 1059.3516209476309,
+    "y": 220.84788029925187,
+    "z": 2006,
+    "height": 277,
+    "width": 150,
+    "tabOrder": 2006
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SAP_cerrados"
+                    }
+                  },
+                  "Property": "Provincia del Cliente"
+                }
+              },
+              "queryRef": "SAP_cerrados.Provincia del Cliente",
+              "nativeQueryRef": "Provincia del Cliente",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
