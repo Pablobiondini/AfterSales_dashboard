@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "511231e2748b483ba703",
   "position": {
-    "x": 74.545454545454533,
-    "y": 98.181818181818173,
+    "x": 74.51371571072319,
+    "y": 97.855361596009971,
     "z": 2002,
-    "height": 303.63636363636363,
-    "width": 815.45454545454538,
+    "height": 309.72568578553614,
+    "width": 815.16209476309223,
     "tabOrder": 2002
   },
   "visual": {
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "DimFecha.Mes",
-              "nativeQueryRef": "Mes",
-              "active": true
+              "nativeQueryRef": "Month",
+              "active": true,
+              "displayName": "Month"
             }
           ]
         },
@@ -46,7 +47,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Laboral",
-              "nativeQueryRef": "TAT Laboral"
+              "nativeQueryRef": "Average Business-Day Turnaround (Days)"
             },
             {
               "field": {
@@ -60,7 +61,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Corridos",
-              "nativeQueryRef": "TAT Corridos"
+              "nativeQueryRef": "Average Calendar Turnaround (Days)"
             },
             {
               "field": {
@@ -74,7 +75,8 @@
                 }
               },
               "queryRef": "Medidas.Casos Cerrados",
-              "nativeQueryRef": "QTY Cerrados"
+              "nativeQueryRef": "Closed cases",
+              "displayName": "Closed cases"
             },
             {
               "field": {
@@ -88,7 +90,7 @@
                 }
               },
               "queryRef": "Medidas.%5D",
-              "nativeQueryRef": "%5D",
+              "nativeQueryRef": "Closed Within 5 Business Days",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -103,7 +105,7 @@
                 }
               },
               "queryRef": "Medidas.%10D",
-              "nativeQueryRef": "%10D",
+              "nativeQueryRef": "Closed Within 10 Business Days",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -118,7 +120,7 @@
                 }
               },
               "queryRef": "Medidas.FVR(10)",
-              "nativeQueryRef": "FVR(10)"
+              "nativeQueryRef": "First-Visit Resolution Within 10 Business Days"
             },
             {
               "field": {
@@ -128,11 +130,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Con Repuesto"
+                  "Property": "%SP Usage"
                 }
               },
               "queryRef": "Medidas.% Con Repuesto",
-              "nativeQueryRef": "% Con Repuesto",
+              "nativeQueryRef": "Spare-Parts Rate",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -143,11 +145,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "%Coverage Range"
+                  "Property": "%CoverRange"
                 }
               },
               "queryRef": "Medidas.Coverage Range",
-              "nativeQueryRef": "Coverage Range",
+              "nativeQueryRef": "In-Range Service Rate",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -162,7 +164,7 @@
                 }
               },
               "queryRef": "Medidas.%TATcorr+30",
-              "nativeQueryRef": "%TATcorr+30",
+              "nativeQueryRef": "Turnaround of 30 or More Calendar Days",
               "format": "0.00 %;-0.00 %;0.00 %"
             },
             {
@@ -177,7 +179,7 @@
                 }
               },
               "queryRef": "Medidas.RRR-60 %",
-              "nativeQueryRef": "%RRR-60"
+              "nativeQueryRef": "60-Day Repeat-Repair Rate"
             }
           ]
         }
@@ -186,16 +188,16 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "DimFecha"
+                    "Entity": "Medidas"
                   }
                 },
-                "Property": "Mes"
+                "Property": "TAT Corridos"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }
@@ -271,6 +273,20 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'How Are Service Volume and Performance Changing by Month?'"
                 }
               }
             }

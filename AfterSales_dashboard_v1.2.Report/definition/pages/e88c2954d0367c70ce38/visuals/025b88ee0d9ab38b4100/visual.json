@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "DimFecha.Año",
-              "nativeQueryRef": "Año",
+              "nativeQueryRef": "Reporting Year",
               "active": true
             }
           ]
@@ -46,7 +46,7 @@
                 }
               },
               "queryRef": "DimFecha.Mes",
-              "nativeQueryRef": "Mes",
+              "nativeQueryRef": "Month",
               "active": true
             }
           ]
@@ -65,7 +65,7 @@
                 }
               },
               "queryRef": "Medidas.Casos Cerrados",
-              "nativeQueryRef": "QTY Cerrados"
+              "nativeQueryRef": "Closed Cases"
             },
             {
               "field": {
@@ -79,7 +79,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Laboral",
-              "nativeQueryRef": "TAT Laboral"
+              "nativeQueryRef": "Average Business-Day Turnaround (Days)"
             },
             {
               "field": {
@@ -93,7 +93,7 @@
                 }
               },
               "queryRef": "Medidas.%TATcorr+30",
-              "nativeQueryRef": "%TATcorr+30",
+              "nativeQueryRef": "Turnaround of 30 or More Calendar Days",
               "format": "0.00 %;-0.00 %;0.00 %"
             }
           ]
@@ -128,6 +128,35 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'How Are Case Volume and Turnaround Time Changing Year over Year?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

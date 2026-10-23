@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "d8422b5b87b696867aa7",
-  "displayName": "By Provider (Group)",
+  "displayName": "Service Provider Ranking",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,

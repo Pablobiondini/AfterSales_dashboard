@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Corridos",
-              "nativeQueryRef": "TAT Corridos"
+              "nativeQueryRef": "Average Calendar Turnaround (Days)"
             }
           ]
         }
@@ -51,6 +51,35 @@
         "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'What Was the Average Calendar Turnaround?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

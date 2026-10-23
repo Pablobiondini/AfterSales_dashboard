@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "f13e443a70b05cd06a35",
   "position": {
-    "x": 1059.3516209476309,
-    "y": 220.84788029925187,
+    "x": 1062.9426433915212,
+    "y": 199.30174563591021,
     "z": 2006,
-    "height": 277,
-    "width": 150,
+    "height": 201.99501246882792,
+    "width": 160.69825436408976,
     "tabOrder": 2006
   },
   "visual": {
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Provincia del Cliente",
-              "nativeQueryRef": "Provincia del Cliente",
+              "nativeQueryRef": "Customer Province",
               "active": true
             }
           ]
@@ -51,6 +51,48 @@
       "general": [
         {
           "properties": {}
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Select a Customer Province'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
       ]
     },

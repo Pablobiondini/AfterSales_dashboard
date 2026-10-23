@@ -60,7 +60,7 @@ table Medidas
 		formatString: 0
 		lineageTag: a7c4a996-8ac3-409d-b627-5eaa4da854fc
 
-	measure '% Con Repuesto' = ```
+	measure '%SP Usage' = ```
 			
 			AVERAGE( SAP_cerrados[Con Repuesto] )
 			
@@ -69,7 +69,7 @@ table Medidas
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure '%Coverage Range' = ```
+	measure %CoverRange = ```
 			
 			DIVIDE(
 			    CALCULATE(
@@ -253,17 +253,17 @@ table Medidas
 		formatString: 0.0\ %;-0.0\ %;0.0\ %
 		lineageTag: dd72e26f-0b38-4db6-ac7d-853e7f2cfa22
 
-	measure %RRR-30 =
+	measure 'ASC Category' =
 			
-			DIVIDE(
-			    CALCULATE(
-			        [QTY Cerrados],
-			        SAP_cerrados[RRR-30 Flag] = 1
-			    ),
-			    [QTY Cerrados]
-			)
-		formatString: 0.0\ %;-0.0\ %;0.0\ %
-		lineageTag: 670e4c51-8005-4c5c-83c2-5fd1e59b24e5
+			VAR ClosedCases = [QTY Cerrados]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ClosedCases >= 50, "A",
+			        ClosedCases >= 7, "B",
+			        "C"
+			    )
+		lineageTag: 6e63fd68-3d61-4fd9-a7ac-0f9fcc1ac2ca
 
 	column Column
 		isHidden

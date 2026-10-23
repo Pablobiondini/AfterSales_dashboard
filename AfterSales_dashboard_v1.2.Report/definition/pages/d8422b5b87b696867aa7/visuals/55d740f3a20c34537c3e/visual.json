@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "55d740f3a20c34537c3e",
   "position": {
     "x": 51.172069825436409,
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Centro de Servicio",
-              "nativeQueryRef": "Centro de Servicio"
+              "nativeQueryRef": "Service Provider"
             },
             {
               "field": {
@@ -41,7 +41,7 @@
                 }
               },
               "queryRef": "Medidas.QTY Cerrados",
-              "nativeQueryRef": "QTY Cerrados"
+              "nativeQueryRef": "Closed Cases"
             },
             {
               "field": {
@@ -55,7 +55,7 @@
                 }
               },
               "queryRef": "Medidas.%5D",
-              "nativeQueryRef": "%5D",
+              "nativeQueryRef": "Closed Within 5 Business Days",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -70,7 +70,7 @@
                 }
               },
               "queryRef": "Medidas.%10D",
-              "nativeQueryRef": "%10D",
+              "nativeQueryRef": "Closed Within 10 Business Days",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -85,7 +85,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Corridos",
-              "nativeQueryRef": "TAT Corridos"
+              "nativeQueryRef": "Average Calendar Turnaround (Days)"
             },
             {
               "field": {
@@ -99,7 +99,7 @@
                 }
               },
               "queryRef": "Medidas.1stVisitRes",
-              "nativeQueryRef": "1stVisitRes",
+              "nativeQueryRef": "First-Visit Resolution Rate",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -110,11 +110,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Con Repuesto"
+                  "Property": "%SP Usage"
                 }
               },
               "queryRef": "Medidas.% Con Repuesto",
-              "nativeQueryRef": "% Con Repuesto",
+              "nativeQueryRef": "Spare-Parts Rate",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -129,7 +129,21 @@
                 }
               },
               "queryRef": "Medidas.Pareto Flag",
-              "nativeQueryRef": "Pareto Flag"
+              "nativeQueryRef": "Top 80% Volume Group"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "ASC Category"
+                }
+              },
+              "queryRef": "Medidas.ASC Category",
+              "nativeQueryRef": "ASC Category"
             }
           ]
         }
@@ -151,6 +165,35 @@
           }
         ]
       }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Which Service Providers Have the Highest Volume and Strongest Results?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "cb0f05b87f6a767a7b2a",
-  "displayName": "Call Center",
+  "displayName": "Call Center Insights",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280

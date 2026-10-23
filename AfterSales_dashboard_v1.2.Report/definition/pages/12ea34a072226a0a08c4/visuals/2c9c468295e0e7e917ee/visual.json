@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "Medidas.NPS CC",
-              "nativeQueryRef": "NPS CC"
+              "nativeQueryRef": "Call Center Net Promoter Score"
             },
             {
               "field": {
@@ -41,7 +41,7 @@
                 }
               },
               "queryRef": "Medidas.NPS ST",
-              "nativeQueryRef": "NPS ST"
+              "nativeQueryRef": "Technical Service Net Promoter Score"
             }
           ]
         }
@@ -65,6 +65,35 @@
         "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'How Does Net Promoter Score Compare Across Service Channels?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Clase de Aviso",
-              "nativeQueryRef": "Clase de Aviso"
+              "nativeQueryRef": "Notice Type"
             }
           ]
         }
@@ -78,7 +78,36 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Select a Notice Type'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   },
   "filterConfig": {
     "filters": [

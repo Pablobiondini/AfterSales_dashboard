@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "67abf0ff9ad65d990902",
-  "displayName": "Service Type",
+  "displayName": "Service Delivery Mix",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,

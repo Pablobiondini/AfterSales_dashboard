@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "Medidas.%5D",
-              "nativeQueryRef": "%5D",
+              "nativeQueryRef": "Closed Within 5 Business Days",
               "format": "0.0 %;-0.0 %;0.0 %"
             }
           ]
@@ -52,6 +52,35 @@
         "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'What Share of Cases Were Closed Within 5 Business Days?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

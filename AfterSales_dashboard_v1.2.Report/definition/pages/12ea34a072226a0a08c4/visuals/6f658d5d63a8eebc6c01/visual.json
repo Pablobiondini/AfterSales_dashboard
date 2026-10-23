@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "NPS_Base.NPS_Clase",
-              "nativeQueryRef": "NPS_Clase",
+              "nativeQueryRef": "Customer Sentiment",
               "active": true
             }
           ]
@@ -51,7 +51,7 @@
                 }
               },
               "queryRef": "CountNonNull(NPS_Base.Tipo_NPS)",
-              "nativeQueryRef": "Recuento de Tipo_NPS"
+              "nativeQueryRef": "Survey Responses"
             }
           ]
         }
@@ -80,7 +80,36 @@
         "isDefaultSort": true
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'How Are Technical Service Survey Responses Distributed?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   },
   "filterConfig": {
     "filters": [

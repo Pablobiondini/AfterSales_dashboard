@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Centro de Servicio",
-              "nativeQueryRef": "Centro de Servicio"
+              "nativeQueryRef": "Service Provider"
             },
             {
               "field": {
@@ -41,7 +41,7 @@
                 }
               },
               "queryRef": "Medidas.QTY Cerrados",
-              "nativeQueryRef": "QTY Cerrados"
+              "nativeQueryRef": "Closed Cases"
             },
             {
               "field": {
@@ -55,7 +55,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Corridos",
-              "nativeQueryRef": "TAT Corridos"
+              "nativeQueryRef": "Average Calendar Turnaround (Days)"
             },
             {
               "field": {
@@ -69,7 +69,7 @@
                 }
               },
               "queryRef": "Medidas.%5D",
-              "nativeQueryRef": "%5D",
+              "nativeQueryRef": "Closed Within 5 Business Days",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -84,7 +84,7 @@
                 }
               },
               "queryRef": "Medidas.%10D",
-              "nativeQueryRef": "%10D",
+              "nativeQueryRef": "Closed Within 10 Business Days",
               "format": "0.0 %;-0.0 %;0.0 %"
             }
           ]
@@ -131,6 +131,35 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Which Service Providers Serve the Selected Area?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

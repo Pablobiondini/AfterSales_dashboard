@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Season",
-              "nativeQueryRef": "Season"
+              "nativeQueryRef": "Service Season"
             }
           ]
         }
@@ -230,6 +230,33 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Select a Service Season'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

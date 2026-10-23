@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "7661f0bd894595fdd382",
   "position": {
     "x": 50.274314214463836,
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "DimFecha.Año",
-              "nativeQueryRef": "Año",
+              "nativeQueryRef": "Reporting Year",
               "active": true
             }
           ]
@@ -46,7 +46,7 @@
                 }
               },
               "queryRef": "DimFecha.Mes",
-              "nativeQueryRef": "Mes",
+              "nativeQueryRef": "Month",
               "active": true
             }
           ]
@@ -65,7 +65,7 @@
                 }
               },
               "queryRef": "Medidas.Casos Cerrados",
-              "nativeQueryRef": "QTY Cerrados"
+              "nativeQueryRef": "Closed Cases"
             },
             {
               "field": {
@@ -75,11 +75,11 @@
                       "Entity": "Medidas"
                     }
                   },
-                  "Property": "% Con Repuesto"
+                  "Property": "%SP Usage"
                 }
               },
               "queryRef": "Medidas.% Con Repuesto",
-              "nativeQueryRef": "% Con Repuesto",
+              "nativeQueryRef": "Spare-Parts Rate",
               "format": "0.0 %;-0.0 %;0.0 %"
             },
             {
@@ -94,7 +94,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Corridos",
-              "nativeQueryRef": "TAT Corridos"
+              "nativeQueryRef": "Average Calendar Turnaround (Days)"
             }
           ]
         }
@@ -163,6 +163,35 @@
       "columnHeaders": [
         {
           "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'How Are Spare-Parts Usage and Calendar Turnaround Changing?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
       ]
     },

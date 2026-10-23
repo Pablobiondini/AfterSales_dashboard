@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a4a486028ef00cd554da",
   "position": {
     "x": 72.718204488778056,
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Centro de Servicio",
-              "nativeQueryRef": "Centro de Servicio",
+              "nativeQueryRef": "Service Provider",
               "active": true
             }
           ]
@@ -75,7 +75,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'Bonafede Refrigeracion'"
+                                "Value": "'AB Service'"
                               }
                             }
                           ]
@@ -106,6 +106,35 @@
         {
           "properties": {
             "strictSingleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Select a Service Provider'"
+                }
+              }
+            },
+            "titleWrap": {
               "expr": {
                 "Literal": {
                   "Value": "true"

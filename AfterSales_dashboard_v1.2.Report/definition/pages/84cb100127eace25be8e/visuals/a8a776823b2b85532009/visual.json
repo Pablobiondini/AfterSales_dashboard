@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a8a776823b2b85532009",
   "position": {
-    "x": 913.63636363636351,
-    "y": 199.09090909090907,
+    "x": 913.91521197007478,
+    "y": 199.30174563591021,
     "z": 2004,
-    "height": 202.72727272727272,
-    "width": 127.27272727272727,
+    "height": 201.99501246882792,
+    "width": 126.58354114713217,
     "tabOrder": 2004
   },
   "visual": {
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Clase de Aviso",
-              "nativeQueryRef": "Clase de Aviso",
+              "nativeQueryRef": "Notice Type",
               "active": true
             }
           ]
@@ -60,6 +60,61 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'PD Type'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

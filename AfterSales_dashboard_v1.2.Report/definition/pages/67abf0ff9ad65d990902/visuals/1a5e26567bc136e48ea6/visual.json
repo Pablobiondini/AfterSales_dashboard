@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Service Type",
-              "nativeQueryRef": "Service Type",
+              "nativeQueryRef": "Service Modality",
               "active": true
             },
             {
@@ -42,7 +42,7 @@
                 }
               },
               "queryRef": "DimFecha.Año",
-              "nativeQueryRef": "Año",
+              "nativeQueryRef": "Reporting Year",
               "active": true
             }
           ]
@@ -61,7 +61,7 @@
                 }
               },
               "queryRef": "DimFecha.Mes",
-              "nativeQueryRef": "Mes",
+              "nativeQueryRef": "Month",
               "active": true
             }
           ]
@@ -85,7 +85,7 @@
                 }
               },
               "queryRef": "Min(SAP_cerrados.Service Type)",
-              "nativeQueryRef": "Qty",
+              "nativeQueryRef": "Service Modality Count",
               "displayName": "Qty"
             },
             {
@@ -100,7 +100,7 @@
                 }
               },
               "queryRef": "Medidas.TAT Laboral",
-              "nativeQueryRef": "TAT Laboral"
+              "nativeQueryRef": "Average Business-Day Turnaround (Days)"
             },
             {
               "field": {
@@ -114,7 +114,7 @@
                 }
               },
               "queryRef": "Medidas.%5D",
-              "nativeQueryRef": "%5D",
+              "nativeQueryRef": "Closed Within 5 Business Days",
               "format": "0.00 %;-0.00 %;0.00 %"
             }
           ]
@@ -182,6 +182,35 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'How Do Turnaround and Five-Day Results Compare by Service Modality?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
   }
 }

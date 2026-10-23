@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "611454f8b735270e6d9d",
   "position": {
     "x": 1036.0099750623442,
@@ -27,7 +27,7 @@
                 }
               },
               "queryRef": "SAP_cerrados.Geolocalizacion",
-              "nativeQueryRef": "Geolocalizacion",
+              "nativeQueryRef": "Customer Location",
               "active": true
             }
           ]
@@ -76,7 +76,7 @@
             "centerLatitude": {
               "expr": {
                 "Literal": {
-                  "Value": "-40.40208283237693D"
+                  "Value": "-40.40208283237697D"
                 }
               }
             },
@@ -199,7 +199,21 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Where Are Customers Receiving Service?'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
